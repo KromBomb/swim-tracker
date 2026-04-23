@@ -9,7 +9,15 @@ def main_menu():
         print("2. View total yards ")
         print("3. View history")
         print("4. Quit")
-        choice = int(input("Choose an option: "))
+
+        try:
+            choice = int(input("Choose an option: "))
+        except ValueError:
+            print("ERROR: You must Enter a number that correspondence to a choice in the menu")
+            continue
+
+
+
 
         if choice == 1:
             log_workout()
@@ -38,16 +46,39 @@ def log_workout():
     today = str(date.today())
 
     warm_up_desc = input("What did you do in warm up (e.g 4x200 freestyle): ")
-    warm_up_yards = int(input("Enter the amount of yards in warm up: "))
+
+    while True:
+        try:
+            warm_up_yards = int(input("Enter the amount of yards in warm up: "))
+            break
+        except ValueError:
+            print("ERROR: Please enter a number.")
 
     pre_set_desc = input("What did you do in the pre set (e.g 3x75 freestyle) if non enter 0: ")
-    pre_set_yards = int(input("Enter the amount of yards in the pre set: "))
+    while True:
+        try:
+            pre_set_yards = int(input("Enter the amount of yards in the pre set: "))
+            break
+        except:
+            print("ERROR: Please enter a number.")
+
 
     main_set_desc = input("What did you do in the main set (e.g 4x200 freestyle 8x50 backstroke): ")
-    main_set_yards = int(input("Enter the amount of yards in the main set: "))
+
+    while True:
+        try:
+            main_set_yards = int(input("Enter the amount of yards in the main set: "))
+            break
+        except:
+            print("ERROR: Please enter a number.")
 
     post_set_desc = input("What did you do in the post set (e.g 8x50 backstroke): ")
-    post_set_yards = int(input("Enter the amount of yards in the post set: "))
+    while True:
+        try:
+            post_set_yards = int(input("Enter the amount of yards in the post set: "))
+            break
+        except:
+            print("ERROR: Please enter a number.")
 
     workout = {
         "date": today,
