@@ -7,16 +7,23 @@ def main_menu():
         print("=== Swim Tracker ===")
         print("1. Log a workout")
         print("2. View total yards ")
-        print("3. Quit")
+        print("3. View history")
+        print("4. Quit")
         choice = int(input("Choose an option: "))
 
         if choice == 1:
             log_workout()
         elif choice == 2:
             view_totals()
+
         elif choice == 3:
+            view_history()
+
+        elif choice == 4:
             print("You have ended the SWIM TRACKER")
             quit()
+
+
 
 
 def load_data():
@@ -62,6 +69,8 @@ def log_workout():
     workouts.append(workout)
     save_data(workouts)
 
+
+
 def view_totals():
     workouts = load_data()
     total = 0
@@ -69,6 +78,18 @@ def view_totals():
     for workout in workouts:
         total += workout["warm_up_yards"] + workout["pre_set_yards"] + workout["main_set_yards"] + workout["post_set_yards"]
     print(f"Total yards: {total}")
+
+def view_history():
+    workouts = load_data()
+
+    for workout in workouts:
+        print(f"Date: {workout['date']}")
+        print(f"Warm up: {workout['warm_up_desc']}")
+        print(f"Pre set: {workout['pre_set_desc']}")
+        print(f"Main set: {workout['main_set_desc']}")
+        print(f"Post set: {workout['post_set_desc']}")
+        print()
+
 
 
 def main():
